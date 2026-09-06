@@ -1,0 +1,1 @@
+const root=document.documentElement;const key='theme';if(localStorage.getItem(key)==='dark')root.classList.add('dark');document.getElementById('theme-toggle')?.addEventListener('click',()=>{root.classList.toggle('dark');localStorage.setItem(key,root.classList.contains('dark')?'dark':'light')});
