@@ -1,20 +1,24 @@
 :root{
     --bg:#fff;
     --text:#202124;
-    --muted:#666;
-    --line:#e7e7e7;
+    --muted:#6b7280;
+    --line:#e5e7eb;
     --link:#1558d6;
     --card:#fafafa;
 }
 
 :root.dark{
     --bg:#111;
-    --text:#eee;
-    --muted:#aaa;
+    --text:#f3f4f6;
+    --muted:#9ca3af;
     --line:#2d2d2d;
     --link:#79a8ff;
     --card:#191919;
 }
+
+/* =========================================
+   全局基础
+========================================= */
 
 *{
     box-sizing:border-box;
@@ -30,9 +34,27 @@ body{
 body{
     background:var(--bg);
     color:var(--text);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    line-height:1.75;
+
+    /* 更现代、干净的系统字体 */
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    /* 正文行间距 */
+    line-height:1.65;
+
+    font-size:16px;
+    font-weight:400;
+
     overflow-x:hidden;
+
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
 }
 
 a{
@@ -49,7 +71,7 @@ button{
 
 /* =========================================
    页面容器
-   ========================================= */
+========================================= */
 
 .container{
     width:100%;
@@ -60,41 +82,57 @@ button{
 
 /* =========================================
    Header
-   ========================================= */
+========================================= */
 
 .site-header{
     border-bottom:1px solid var(--line);
+
     position:sticky;
     top:0;
+
     background:var(--bg);
+
     opacity:.96;
+
     z-index:10;
+
+    backdrop-filter:blur(8px);
 }
 
 .nav{
     min-height:64px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
+
     gap:24px;
 }
 
 .brand{
-    font-weight:700;
+    font-size:15px;
+    font-weight:650;
+
     color:var(--text);
     text-decoration:none;
+
+    letter-spacing:-0.01em;
 }
 
 .nav-links{
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:22px;
 }
 
 .nav-links a{
     color:var(--text);
     text-decoration:none;
+
     font-size:14px;
+    font-weight:500;
+
+    transition:color .15s ease;
 }
 
 .nav-links a:hover,
@@ -105,65 +143,98 @@ a:hover{
 
 /* =========================================
    Main
-   ========================================= */
+========================================= */
 
 main{
-    padding-top:56px;
+    padding-top:58px;
 }
 
 /* =========================================
-   Typography
-   ========================================= */
+   标题层级
+========================================= */
 
 h1{
     font-size:42px;
-    line-height:1.2;
-    margin:0 0 10px;
+
+    line-height:1.15;
+
+    font-weight:750;
+
+    letter-spacing:-0.035em;
+
+    margin:0 0 8px;
 }
 
 h2{
-    font-size:26px;
+    font-size:24px;
+
     line-height:1.3;
+
+    font-weight:700;
+
+    letter-spacing:-0.02em;
+
     margin:0;
 }
 
 h3{
+    font-size:19px;
+
+    line-height:1.4;
+
+    font-weight:650;
+
+    letter-spacing:-0.01em;
+
     margin:0 0 7px;
-    font-size:20px;
-    line-height:1.35;
 }
 
 /* =========================================
    Hero
-   ========================================= */
+========================================= */
 
 .hero{
     display:flex;
     flex-direction:column;
     align-items:center;
+
     text-align:center;
-    gap:16px;
-    margin-bottom:80px;
+
+    gap:13px;
+
+    margin-bottom:76px;
 }
 
 .avatar{
-    width:150px;
-    height:150px;
+    width:148px;
+    height:148px;
+
     border-radius:50%;
+
     object-fit:cover;
+
     border:1px solid var(--line);
-    margin:0 auto;
+
+    margin:0 auto 6px;
 }
 
 .subtitle{
     color:var(--muted);
-    margin:8px 0 12px;
+
+    font-size:16px;
+
+    font-weight:450;
+
+    margin:4px 0 10px;
 }
 
 .links{
     display:flex;
-    gap:14px;
+
+    gap:15px;
+
     flex-wrap:wrap;
+
     justify-content:center;
 }
 
@@ -171,201 +242,271 @@ h3{
 .pub-links a,
 .card a{
     color:var(--link);
+
     text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:500;
 }
 
 /* =========================================
-   核心 Section 布局
-   -----------------------------------------
-   左边：标题
-   右边：所有正文
-   ========================================= */
+   Section
+   左标题 + 右内容
+========================================= */
 
 section{
     display:grid;
+
     grid-template-columns:220px minmax(0,1fr);
+
     column-gap:60px;
+
     align-items:start;
+
     margin-bottom:64px;
+
     text-align:left;
 }
-
-/* 普通标题，例如 About / Achievements */
 
 section > h2{
     grid-column:1;
     grid-row:1;
-    margin:0;
-    padding:0;
-}
 
-/* Publications 的标题容器 */
+    margin:0;
+
+    font-size:23px;
+
+    font-weight:700;
+
+    letter-spacing:-0.02em;
+}
 
 section > div.section-heading{
     grid-column:1;
     grid-row:1;
+
     width:auto;
+
     margin:0;
     padding:0;
+
     display:flex;
+
     align-items:baseline;
+
     justify-content:flex-start;
-    gap:20px;
+
+    gap:16px;
 }
 
 /* =========================================
-   最重要的部分：
-   标题之后的所有直接子元素全部放右侧
-   ========================================= */
+   Section 后面的所有正文
+========================================= */
 
-/* h2 后面的内容 */
-
-section > h2 ~ *{
-    grid-column:2;
-    min-width:0;
-}
-
-/* Publications heading 后面的内容 */
-
+section > h2 ~ *,
 section > div.section-heading ~ *{
     grid-column:2;
+
     min-width:0;
-}
-
-/* 防止某些元素撑破右侧 */
-
-section > *{
-    min-width:0;
-}
-
-/* =========================================
-   Section heading
-   ========================================= */
-
-.section-heading a{
-    color:var(--link);
-    text-decoration:none;
-    margin-left:0;
-    white-space:nowrap;
 }
 
 /* =========================================
    普通正文
-   ========================================= */
+========================================= */
 
 section p{
     margin-top:0;
+
+    margin-bottom:22px;
+
+    font-size:16px;
+
+    line-height:1.72;
+
+    font-weight:400;
+
+    color:var(--text);
 }
+
+/* 第一段稍微突出 */
+section p:first-of-type{
+    margin-top:0;
+}
+
+/* =========================================
+   News / Achievements
+========================================= */
+
+.news-item{
+    width:100%;
+
+    padding:18px 0;
+
+    margin-bottom:0;
+
+    border:0;
+
+    border-bottom:1px solid var(--line);
+
+    border-radius:0;
+
+    background:transparent;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+    font-size:15px;
+
+    line-height:1.65;
+}
+
+.news-item:first-child{
+    padding-top:0;
+}
+
+.news-item:last-child{
+    border-bottom:0;
+}
+
+.news-item span{
+    display:inline-block;
+
+    width:60px;
+
+    flex-shrink:0;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+    font-weight:500;
+
+    font-variant-numeric:tabular-nums;
+
+    letter-spacing:.01em;
+}
+
+.news-item strong{
+    font-weight:650;
+}
+
+/* =========================================
+   Publications
+========================================= */
+
+.publication{
+    width:100%;
+
+    display:grid;
+
+    grid-template-columns:280px minmax(0,1fr);
+
+    gap:30px;
+
+    padding:29px 0;
+
+    border-top:1px solid var(--line);
+}
+
+.publication:first-of-type{
+    padding-top:0;
+
+    border-top:0;
+}
+
+.publication img{
+    width:100%;
+
+    height:160px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+    border:1px solid var(--line);
+
+    background:var(--card);
+}
+
+.publication > div{
+    min-width:0;
+}
+
+.publication h3{
+    font-size:19px;
+
+    line-height:1.42;
+
+    font-weight:650;
+
+    margin:0 0 7px;
+}
+
+.authors{
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin:0 0 10px;
+
+    font-weight:400;
+}
+
+.publication p{
+    font-size:15px;
+
+    line-height:1.68;
+
+    margin:0 0 12px;
+}
+
+.pub-links{
+    display:flex;
+
+    gap:14px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:0;
+}
+
+.pub-links a{
+    font-size:14px;
+
+    font-weight:550;
+}
+
+/* =========================================
+   辅助文字
+========================================= */
 
 .muted{
     color:var(--muted);
 }
 
 /* =========================================
-   News / Achievements
-   ========================================= */
-
-.news-item{
-    width:100%;
-    padding:24px;
-    border:1px solid var(--line);
-    border-radius:12px;
-    background:var(--card);
-    margin-bottom:16px;
-
-    display:flex;
-    align-items:center;
-
-    gap:30px;
-
-    font-size:16px;
-}
-
-.news-item span{
-    display:inline-block;
-    width:50px;
-    color:var(--muted);
-    font-variant-numeric:tabular-nums;
-    flex-shrink:0;
-}
-
-/* =========================================
-   Publications
-   ========================================= */
-
-.publication{
-    width:100%;
-
-    display:grid;
-    grid-template-columns:280px minmax(0,1fr);
-
-    gap:30px;
-
-    padding:32px 0;
-
-    border-top:1px solid var(--line);
-}
-
-/* 第一篇 publication 不需要顶部线 */
-
-.publication:first-of-type{
-    padding-top:0;
-}
-
-/* 图片 */
-
-.publication img{
-    width:100%;
-    height:160px;
-
-    object-fit:cover;
-
-    border-radius:8px;
-    border:1px solid var(--line);
-
-    background:var(--card);
-}
-
-/* 右侧文字 */
-
-.publication > div{
-    min-width:0;
-}
-
-/* 作者 */
-
-.authors{
-    color:var(--muted);
-    margin:0;
-}
-
-/* publication links */
-
-.pub-links{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-bottom:0;
-}
-
-.pub-links a{
-    color:var(--link);
-    text-decoration:none;
-}
-
-/* =========================================
    Footer
-   ========================================= */
+========================================= */
 
 .footer{
-    padding:40px 50px 60px;
+    padding:38px 50px 55px;
+
     color:var(--muted);
+
     font-size:13px;
+
+    line-height:1.6;
 }
 
 /* =========================================
-   中等屏幕 / Laptop
-   ========================================= */
+   Laptop
+========================================= */
 
 @media (max-width:1100px){
 
@@ -376,11 +517,13 @@ section p{
 
     section{
         grid-template-columns:190px minmax(0,1fr);
-        column-gap:40px;
+
+        column-gap:42px;
     }
 
     .publication{
         grid-template-columns:250px minmax(0,1fr);
+
         gap:26px;
     }
 
@@ -392,7 +535,7 @@ section p{
 
 /* =========================================
    平板
-   ========================================= */
+========================================= */
 
 @media (max-width:850px){
 
@@ -400,13 +543,27 @@ section p{
         padding:0 28px;
     }
 
+    main{
+        padding-top:48px;
+    }
+
+    h1{
+        font-size:38px;
+    }
+
     section{
         grid-template-columns:170px minmax(0,1fr);
+
         column-gap:30px;
+    }
+
+    section > h2{
+        font-size:21px;
     }
 
     .publication{
         grid-template-columns:220px minmax(0,1fr);
+
         gap:24px;
     }
 
@@ -418,13 +575,15 @@ section p{
 
 /* =========================================
    手机
-   ========================================= */
+========================================= */
 
 @media (max-width:700px){
 
     .container{
         width:100%;
+
         max-width:none;
+
         padding:0 20px;
     }
 
@@ -434,6 +593,10 @@ section p{
 
     .nav-links{
         gap:10px;
+    }
+
+    .nav-links a{
+        font-size:13px;
     }
 
     .nav-links a:nth-child(3){
@@ -447,109 +610,142 @@ section p{
     /* Hero */
 
     .hero{
-        align-items:center;
-        gap:20px;
-        margin-bottom:60px;
+        gap:14px;
+
+        margin-bottom:58px;
     }
 
     .avatar{
-        width:100px;
-        height:100px;
+        width:105px;
+        height:105px;
+
+        margin-bottom:4px;
     }
 
     h1{
-        font-size:34px;
+        font-size:32px;
+
+        line-height:1.18;
     }
 
-    h2{
-        font-size:24px;
+    .subtitle{
+        font-size:15px;
+
+        line-height:1.55;
     }
 
-    /* =====================================
-       手机恢复单列
-       ===================================== */
+    /* Section 改为单列 */
 
     section{
         display:block;
-        margin-bottom:44px;
-    }
 
-    /* 标题恢复正常文档流 */
+        margin-bottom:46px;
+    }
 
     section > h2,
     section > div.section-heading{
         width:100%;
-        margin:0 0 20px;
+
+        margin:0 0 18px;
+
         padding:0;
+
         display:flex;
+
         position:static;
     }
 
     section > h2{
         display:block;
-    }
 
-    /* 手机端取消 grid-column */
+        font-size:22px;
+    }
 
     section > h2 ~ *,
     section > div.section-heading ~ *{
         width:100%;
+
         min-width:0;
     }
 
-    /* =====================================
-       新闻 / 成就
-       ===================================== */
+    section p{
+        font-size:15px;
+
+        line-height:1.72;
+
+        margin-bottom:20px;
+    }
+
+    /* News */
 
     .news-item{
-        padding:18px;
-        gap:15px;
-        align-items:flex-start;
+        padding:16px 0;
+
+        gap:14px;
+
+        font-size:15px;
     }
 
     .news-item span{
         width:45px;
+
+        font-size:13px;
     }
 
-    /* =====================================
-       Publications
-       ===================================== */
+    /* Publication */
 
     .publication{
         width:100%;
+
         display:grid;
+
         grid-template-columns:1fr;
-        gap:20px;
-        padding:26px 0;
+
+        gap:18px;
+
+        padding:24px 0;
     }
 
     .publication img{
         width:100%;
+
         height:auto;
+
         max-height:240px;
+    }
+
+    .publication h3{
+        font-size:18px;
+    }
+
+    .authors{
+        font-size:14px;
+    }
+
+    .publication p{
+        font-size:15px;
     }
 
     .section-heading{
         flex-wrap:wrap;
-        gap:8px;
+
+        gap:6px;
     }
 
     .section-heading a{
         margin-left:0;
     }
 
-    /* =====================================
-       Footer
-       ===================================== */
+    /* Footer */
 
     .footer{
-        padding:32px 20px 48px;
+        padding:30px 20px 45px;
     }
 }
 
 /* =========================================
    小手机
-   ========================================= */
+========================================= */
 
 @media (max-width:420px){
 
@@ -558,12 +754,22 @@ section p{
     }
 
     h1{
-        font-size:30px;
+        font-size:29px;
+    }
+
+    .avatar{
+        width:96px;
+        height:96px;
+    }
+
+    section > h2{
+        font-size:21px;
     }
 
     .news-item{
-        padding:16px;
-        font-size:15px;
+        padding:15px 0;
+
+        font-size:14px;
     }
 
     .news-item span{
