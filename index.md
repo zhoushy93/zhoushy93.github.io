@@ -27,4 +27,12 @@ title: Home
   </div>
 </section>
 
-<section><div class="section-heading"><h2>Publications</h2><a href="/publications/">View all →</a></div>{% for paper in site.data.publications limit:4 %}{% include publication.html paper=paper %}{% endfor %}</section>
+<section>
+  <div class="section-heading">
+    <h2>Publications</h2>
+  </div>
+
+  <div class="publication-empty">
+    <p>To be continued.</p>
+  </div>
+</section>
