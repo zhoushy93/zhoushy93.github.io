@@ -2,7 +2,10 @@
 :root.dark{--bg:#111;--text:#eee;--muted:#aaa;--line:#2d2d2d;--link:#79a8ff;--card:#191919}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.75}
-.container{max-width:980px;margin:0 auto;padding:0 24px}
+
+/* 加宽容器，解决太窄的问题 */
+.container{max-width:1200px;margin:0 auto;padding:0 40px}
+
 .site-header{border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--bg);opacity:.96;z-index:10}
 .nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{font-weight:700;color:var(--text);text-decoration:none}
@@ -10,61 +13,52 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,B
 .nav-links a{color:var(--text);text-decoration:none;font-size:14px}
 .nav-links a:hover,.pub-links a:hover,a:hover{color:var(--link)}
 button{border:0;background:transparent;color:var(--text);font-size:18px;cursor:pointer}
-main{padding-top:48px}
+main{padding-top:56px}
 h1{font-size:42px;line-height:1.2;margin:0 0 10px}
 h2{font-size:26px;margin:0}
 h3{margin:0 0 7px;font-size:20px;line-height:1.35}
 
-/* --- Hero 头像居中 --- */
-.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;margin-bottom:64px}
+/* 头像居中 */
+.hero{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;margin-bottom:80px}
 .avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:1px solid var(--line);margin:0 auto}
 .subtitle{color:var(--muted);margin:8px 0 12px}
 .links{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
 .links a,.pub-links a,.card a{color:var(--link);text-decoration:none}
 
-/* --- 核心对齐代码：统一 About, Achievements, Publications --- */
-section {
-    position: relative; 
-    padding-left: 200px; 
-    margin-bottom: 54px;
+/* 核心对齐：使用 Grid 让左侧标题定宽，右侧内容自动自适应撑满剩余空间（解决太窄问题） */
+section{
+    margin: 0 0 60px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
     text-align: left;
 }
-/* 针对 About 和 Achievements 的标题 */
-section > h2 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200px;
+section > h2, section > .section-heading {
+    margin: 0;
 }
-/* 针对 Publications 的标题容器 */
-section > .section-heading {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 200px;
+.section-heading{
     display: flex;
     justify-content: space-between;
     align-items: baseline;
 }
-.section-heading a {
-    position: absolute;
-    left: 100%;
-    margin-left: 24px;
-    white-space: nowrap;
+.section-heading a{
     color: var(--link);
     text-decoration: none;
+    white-space: nowrap;
+    margin-left: 20px;
 }
 
-/* --- Achievements 中的 news-item 卡片化 --- */
+/* 新闻/奖项卡片 */
 .news-item{
-    padding: 18px;
+    padding: 24px;
     border: 1px solid var(--line);
     border-radius: 12px;
     background: var(--card);
-    margin: 12px 0;
+    margin: 16px 0;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
+    font-size: 16px;
 }
 .news-item span{
     display: inline-block;
@@ -74,15 +68,15 @@ section > .section-heading {
     flex-shrink: 0;
 }
 
-/* --- 出版物排版 --- */
-.publication{display:grid;grid-template-columns:230px 1fr;gap:26px;padding:28px 0;border-top:1px solid var(--line)}
-.publication img{width:100%;height:145px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--card)}
+/* 出版物排版 */
+.publication{display:grid;grid-template-columns:280px 1fr;gap:30px;padding:32px 0;border-top:1px solid var(--line)}
+.publication img{width:100%;height:160px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--card)}
 .authors{color:var(--muted);margin:0}
 .pub-links{display:flex;gap:14px;margin-bottom:0}
 .muted{color:var(--muted)}
-.footer{padding:40px 24px 60px;color:var(--muted);font-size:13px}
+.footer{padding:40px 40px 60px;color:var(--muted);font-size:13px}
 
-/* --- 移动端适配：取消固定左侧对齐，改为上下单列 --- */
+/* 移动端适配 */
 @media(max-width:700px){
     .nav-links{gap:10px}
     .nav-links a:nth-child(3){display:none}
@@ -90,16 +84,10 @@ section > .section-heading {
     .avatar{width:100px;height:100px}
     h1{font-size:34px}
     
-    /* 移动端恢复单列 */
-    section { padding-left: 0; margin-bottom: 40px; }
-    section > h2, section > .section-heading { 
-        position: static; 
-        width: 100%; 
-        margin-bottom: 20px; 
-    }
-    .section-heading a { position: static; margin: 0; }
-    
+    /* 移动端改为单列，标题在上方 */
+    section{grid-template-columns:1fr;gap:16px;margin-bottom:40px}
+    .container{padding:0 20px}
     .publication{grid-template-columns:1fr}
-    .publication img{height:auto;max-height:220px}
-    .container{padding:0 18px}
+    .publication img{height:auto;max-height:240px}
+    .news-item{padding:18px;gap:15px}
 }
