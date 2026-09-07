@@ -1,140 +1,33 @@
 /* =========================
-Content Sections
-========================= */
+   About / Achievements / Publications
+   ========================= */
 
-.content-section {
-max-width: 1100px;
-margin: 0 auto 72px;
-
-display: grid;
-grid-template-columns: 150px 1fr;
-gap: 55px;
-align-items: start;
+.section-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 55px;
+  align-items: start;
 }
 
-.section-label {
-position: sticky;
-top: 95px;
-}
-
-.section-label h2 {
-margin: 0;
-font-size: 26px;
-line-height: 1.3;
+.section-title h2 {
+  margin: 0;
 }
 
 .section-content {
-min-width: 0;
+  min-width: 0;
 }
 
-.section-content p {
-margin: 0 0 20px;
+/* Publications */
+.section-content .section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-/* =========================
-Achievements
-========================= */
-
-.news-item {
-display: grid;
-grid-template-columns: 90px 1fr;
-gap: 20px;
-
-padding: 13px 0;
-border-bottom: 1px solid var(--line);
-}
-
-.news-item:first-child {
-border-top: 1px solid var(--line);
-}
-
-.news-item span {
-color: var(--muted);
-font-variant-numeric: tabular-nums;
-font-weight: 500;
-}
-
-/* =========================
-Publications
-========================= */
-
-.publication-heading {
-display: flex;
-justify-content: flex-end;
-align-items: baseline;
-margin-bottom: 12px;
-}
-
-.publication-heading a {
-color: var(--muted);
-text-decoration: none;
-font-size: 15px;
-}
-
-.publication-heading a:hover {
-color: var(--link);
-}
-
-.publication {
-display: grid;
-grid-template-columns: 240px 1fr;
-gap: 30px;
-
-padding: 30px 0;
-border-top: 1px solid var(--line);
-}
-
-.publication img {
-width: 100%;
-height: 150px;
-object-fit: cover;
-
-border-radius: 10px;
-border: 1px solid var(--line);
-background: var(--card);
-}
-
-.authors {
-color: var(--muted);
-margin: 0 0 10px;
-}
-
-.pub-links {
-display: flex;
-gap: 16px;
-margin-top: 12px;
-}
-
-.pub-links a {
-color: var(--link);
-text-decoration: none;
-}
-
-/* =========================
-Mobile
-========================= */
-
+/* Mobile */
 @media (max-width: 800px) {
-.content-section {
-grid-template-columns: 1fr;
-gap: 12px;
-}
-
-.section-label {
-position: static;
-}
-
-.publication {
-grid-template-columns: 1fr;
-}
-
-.publication img {
-height: auto;
-max-height: 240px;
-}
-
-.news-item {
-grid-template-columns: 75px 1fr;
-gap: 14px;
-}
+  .section-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
