@@ -6,24 +6,24 @@ title: Projects
 <h1>Projects</h1>
 
 <div class="card">
-  <p class="muted">Computer Vision · Deep Learning · 2026</p>
+  <p class="muted">Computer Vision · Deep Learning · 2025</p>
 
   <h3>CS231n</h3>
 
   <p>
     Implementations and experiments developed while studying
-    Stanford CS231n: Convolutional Neural Networks for Visual Recognition.
+    Stanford CS231n.
   </p>
 
   <p>
     The project covers fundamental computer vision and deep learning topics,
     including image classification, k-Nearest Neighbor, linear classifiers,
-    SVM, Softmax, backpropagation, neural networks, and convolutional neural networks.
+    Softmax, backpropagation, neural networks, and transformers.
   </p>
 
   <p>
     <strong>Topics:</strong>
-    Computer Vision · Deep Learning · Neural Networks · CNN
+    Computer Vision · Deep Learning · Neural Networks · Transformers
   </p>
 
   <a href="https://github.com/zhoushy93/cs231n">
