@@ -52,7 +52,7 @@ title: Projects
     Robotics · Robot Manipulation · Imitation Learning · Vision
   </p>
 
-  <a href="https://github.com/zhoushy93/RoboTwin">
+  <a href="https://github.com/robotwin-Platform/RoboTwin">
     GitHub →
   </a>
 </div>
