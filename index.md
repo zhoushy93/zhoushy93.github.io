@@ -6,7 +6,6 @@ title: Home
 <p class="links">
   <a href="mailto:zhoushy93@mail2.sysu.edu.cn">zhoushy93@mail2.sysu.edu.cn</a>
 </p>
-<a href="https://github.com/zhoushy93.github.io">GitHub</a><a href="/files/cv.pdf">CV</a></p></div></section>
 <section><h2>About</h2><p>I am a sophomore student at <strong>Sun Yat-sen University</strong>. My research interests include computer vision, robotics, machine learning, and embodied AI.</p><p>My research aims to develop intelligent robots that can seamlessly integrate into human society, assist people in meaningful ways, and ultimately enhance human freedom and quality of life.</p></section>
 <section><h2>News</h2><div class="news-item"><span>2026.09</span> Welcome to my new personal website.</div><div class="news-item"><span>2026.08</span> Our paper has been accepted to a major conference.</div><div class="news-item"><span>2026.06</span> Started my Ph.D. at Your University.</div></section>
 <section><div class="section-heading"><h2>Publications</h2><a href="/publications/">View all →</a></div>{% for paper in site.data.publications limit:4 %}{% include publication.html paper=paper %}{% endfor %}</section>
